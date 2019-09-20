@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		a{display: block}
+		*{margin:0 auto;list-style: none;padding:0;}
+		#top{height: 140px;text-align: center;background: #32234323}
+		#top li{display: inline-block;float: left;width: 20%}
+		#top li img{width:75%;height: 150px}
+		body{background: url(ceshi/1.png)no-repeat;
+			background-size:cover }
+	</style>
+</head>
+<body>
+	<div id="top">
+		<ul>
+			<li>
+				<a href="">
+					<img src="ceshi/1.png" alt="">
+				</a>
+			</li>
+			<li>
+				<a href="">
+					<img src="ceshi/2.png" alt="">
+				</a>
+			</li>
+			<li>
+				<a href="">
+					<img src="ceshi/3.png" alt="">
+				</a>
+			</li>
+			<li>
+				<a href="">
+					<img src="ceshi/4.png" alt="">
+				</a>
+			</li>
+			<li>
+				<a href="">
+					<img src="ceshi/5.png" alt="">
+				</a>
+			</li>
+
+		</ul>
+	</div>
+		
+	</div>
+	<script type="text/javascript">
+		window.onload=function(){
+			var aList=document.querySelectorAll('a');
+			//console.log(aList);
+			for(var i=0;i<aList.length;i++){
+				var a=aList[i];
+				(function(reg){
+					a.onclick=function(e){
+						document.body.style.background='url("ceshi/'+reg+'.png")no-repeat';
+						document.body.style.backgroundSize='cover';
+						return false;
+
+					}
+					
+				})(i+1)
+			}
+			
+
+		};
+	</script>
+		
+</body>
+</html>

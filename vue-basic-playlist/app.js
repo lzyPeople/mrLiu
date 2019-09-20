@@ -2,26 +2,14 @@
 new Vue({
   el: '#vue-app', // element
   data() {
-    return {
-      name: '',
-      age: 32
-    };
+    return {};
   },
   methods: {
-    getName() {
-      // console.log(this.$refs.name.value);
-      this.name = this.$refs.name.value;
+    logName() {
+      console.log('正在输入名字...');
     },
-    getAge() {
-      this.age = this.$refs.age.value;
-    }
-  },
-  watch: {
-    name(val, oldVal) {
-      console.log(val, oldVal);
-    },
-    age(val, oldVal) {
-      console.log(val, oldVal);
+    logAge() {
+      console.log('正在输入年龄...');
     }
   }
 });

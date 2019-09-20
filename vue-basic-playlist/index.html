@@ -10,14 +10,12 @@
   </head>
   <body>
     <div id="vue-app">
-      <h1>ref</h1>
+      <h1>Events</h1>
       <label>姓名</label>
-      <input type="text" ref="name" @keyup="getName" />
-      <span>{{ name }}</span>
+      <input type="text" v-on:keydown.enter="logName" />
 
       <label>年龄</label>
-      <input type="text" ref="age" @keyup="getAge" />
-      <span>{{ age }}</span>
+      <input type="text" v-on:keyup.alt.enter="logAge" />
     </div>
   </body>
   <script src="app.js"></script>
