@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none
+    }
+
+    #box {
+        height: 350px;
+        width: 350px;
+        margin: 50px 0 0 50px;
+        position: relative;
+
+    }
+
+    #small_box {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        box-sizing: border-box;
+    }
+
+    #small_box img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border: 1px solid gray
+    }
+
+    #move_box {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 100px;
+        width: 100px;
+        background: rgba(255, 242, 0, 0.5);
+        cursor: move;
+        display: none
+    }
+
+    #big_box {
+        position: absolute;
+        left: 370px;
+        top: 0;
+        height: 600px;
+        width: 500px;
+        overflow: hidden;
+        border: 1px solid gray;
+        display: none;
+    }
+
+    #big_box img {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    #mini_box {
+        margin: 10px 0 0 50px;
+    }
+
+    #mini_box li {
+        float: left;
+        cursor: pointer;
+        margin-left: 5px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="small_box">
+            <img src="ceshi/01.jpg">
+            <span id="move_box"></span>
+        </div>
+        <div id="big_box">
+            <img src="ceshi/1.jpg" alt="">
+        </div>
+    </div>
+    <div id="mini_box">
+        <ul>
+            <li><img src="ceshi/001.jpg"></li>
+            <li><img src="ceshi/002.jpg"></li>
+            <li><img src="ceshi/003.jpg"></li>
+            <li><img src="ceshi/004.jpg"></li>
+            <li><img src="ceshi/005.jpg"></li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+    window.addEventListener('load', function(e) {
+        //1.获取标签
+        var box = document.getElementById('box');
+        var small_box = box.children[0];
+        var small_image=small_box.children[0];
+        var move_box = small_box.children[1];
+        var big_box = box.children[1];
+        var big_image = big_box.children[0];
+        var mini_box_li = document.getElementById('mini_box').getElementsByTagName('li');
+
+        //2.获取鼠标进入事件
+        small_box.addEventListener('mouseover', function(e) {
+            //2.1
+            move_box.style.display = 'block';
+            big_box.style.display = 'block';
+
+            //2.2鼠标移动事件
+            small_box.addEventListener('mousemove', function(ev) {
+
+                var pointX = ev.pageX - box.offsetLeft - move_box.offsetWidth / 2;
+                var pointY = ev.pageY - box.offsetTop - move_box.offsetHeight / 2;
+                move_box.style.left = pointX + 'px';
+                move_box.style.top = pointY + 'px';
+                //2.3限制鼠标移出
+                if (pointX <= 0) {
+                    move_box.style.left = 0;
+                } else if (pointX >= box.offsetWidth - move_box.offsetWidth - 2) {
+                    move_box.style.left = box.offsetWidth - move_box.offsetWidth + 2 + 'px';
+                }
+                if (pointY <= 0) {
+                    move_box.style.top = 0;
+                } else if (pointY >= box.offsetHeight - move_box.offsetHeight - 2) {
+                    move_box.style.top = box.offsetWidth - move_box.offsetHeight + 2 + 'px';
+                }
+                //2.4大图反馈
+                //按比例small_box/big_box=smallX/bigX
+                big_image.style.left = -pointX * big_box.offsetWidth / small_box.offsetWidth + 'px';
+                big_image.style.top = -pointY * big_box.offsetHeight / small_box.offsetHeight + 'px';
+
+            });
+        });
+
+
+        //3.鼠标离开事件
+        small_box.addEventListener('mouseout', function(e) {
+            move_box.style.display = 'none';
+            big_box.style.display = 'none';
+        });
+
+
+        //4.鼠标移动到最小图标操作
+        for(var i=0;i<mini_box_li.length;i++){
+        	(function(i){
+        		var li=mini_box_li[i];
+        		li.addEventListener('mouseover',function(e){
+        			small_image.setAttribute('src','ceshi/0'+(i+1)+'.jpg');
+        			big_image.setAttribute('src','ceshi/'+(i+1)+'.jpg');
+        		});
+        	})(i)
+        }
+
+    });
+    </script>
+</body>
+
+</html>
