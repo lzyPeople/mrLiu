@@ -78,20 +78,20 @@
 <body>
     <div id="box">
         <div id="small_box">
-            <img src="ceshi/01.jpg">
+            <img src="goods_display/01.jpg">
             <span id="move_box"></span>
         </div>
         <div id="big_box">
-            <img src="ceshi/1.jpg" alt="">
+            <img src="goods_display/1.jpg" alt="">
         </div>
     </div>
     <div id="mini_box">
         <ul>
-            <li><img src="ceshi/001.jpg"></li>
-            <li><img src="ceshi/002.jpg"></li>
-            <li><img src="ceshi/003.jpg"></li>
-            <li><img src="ceshi/004.jpg"></li>
-            <li><img src="ceshi/005.jpg"></li>
+            <li><img src="goods_display/001.jpg"></li>
+            <li><img src="goods_display/002.jpg"></li>
+            <li><img src="goods_display/003.jpg"></li>
+            <li><img src="goods_display/004.jpg"></li>
+            <li><img src="goods_display/005.jpg"></li>
         </ul>
     </div>
     <script type="text/javascript">
@@ -150,8 +150,8 @@
         	(function(i){
         		var li=mini_box_li[i];
         		li.addEventListener('mouseover',function(e){
-        			small_image.setAttribute('src','ceshi/0'+(i+1)+'.jpg');
-        			big_image.setAttribute('src','ceshi/'+(i+1)+'.jpg');
+        			small_image.setAttribute('src','goods_display/0'+(i+1)+'.jpg');
+        			big_image.setAttribute('src','goods_display/'+(i+1)+'.jpg');
         		});
         	})(i)
         }
